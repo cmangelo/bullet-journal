@@ -1,3 +1,18 @@
-<p>
-  journal works!
-</p>
+<h1>{{date | date:'MMMM y'}}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let habit of habits"><span style="writing-mode: vertical-lr">{{habit.name}}</span></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let day of days">
+      <td>{{day}}</td>
+      <td *ngFor="let habit of habits">
+        <span *ngIf="habit.completions.includes(day)">y</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
