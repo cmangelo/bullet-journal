@@ -19,17 +19,18 @@ export class JournalService {
     );
   }
 
-  getCompletions(): Array<number> {
-    return [1,3,5,6,9,12,13];
-    // return new Array(
-    //   new Date(2019, 1,2),
-    //   new Date(2019, 1,3),
-    //   new Date(2019, 1,6),
-    //   new Date(2019, 1,12),
-    //   new Date(2019, 1,15),
-    //   new Date(2019, 1,18),
-    //   new Date(2019, 1,23),
-    // )
+  getCompletions(): {[key: number]: boolean} {
+    return {
+      1: true,
+      3: true,
+      5: true,
+      6: true,
+      9: true,
+      12: true,
+      17: true,
+      23: true,
+      29: true
+    }
   }
 
 }

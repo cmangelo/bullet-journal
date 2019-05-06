@@ -12,6 +12,7 @@ export class JournalComponent implements OnInit {
   date: Date;
   habits: Array<Habit>;
   days: any[];
+  today: number;
 
   constructor(private service: JournalService) { }
 
@@ -22,9 +23,21 @@ export class JournalComponent implements OnInit {
       this.days[i] = i + 1;
     }
     this.date = new Date(2019,1,1);
+    this.today = new Date().getDate();
   }
 
   getDaysOfMonth(year: number, month: number): number {
     return new Date(year, month, 0).getDate();
+  }
+
+  toggleDay(habit: Habit, day: number) {
+    if (day > this.today)
+      return;
+
+    if (habit.completions[day]) {
+      delete habit.completions[day];
+    } else {
+      habit.completions[day] = true;
+    }
   }
 }
