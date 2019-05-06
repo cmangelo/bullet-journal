@@ -1,0 +1,31 @@
+table {
+    thead {
+        tr {
+            border-bottom: 1px solid #333333;
+        }
+    }
+
+    tbody {
+
+        tr {
+            &.uneditable {
+                background-color: #f1f1f1;
+            }
+
+            td {
+                height: 40px;
+                border-right: 1px solid #333333;
+                border-bottom: 1px solid #333333;
+                width: 40px;
+                text-align: center;
+                vertical-align: middle;
+                
+                &:first-of-type {
+                    border-left: 1px solid #333333;
+                }
+            }
+        }
+        
+        
+    }
+}
