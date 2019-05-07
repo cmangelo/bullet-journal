@@ -17,7 +17,7 @@ export class JournalComponent implements OnInit {
   constructor(private service: JournalService) { }
 
   ngOnInit() {
-    this.habits = this.service.getJournal();
+    this.service.getJournalObs().subscribe(data => this.habits = data);
     this.days = new Array(this.getDaysOfMonth(2019,1));
     for(var i = 0; i < this.days.length; i++){
       this.days[i] = i + 1;
