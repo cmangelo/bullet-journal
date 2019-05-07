@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Habit } from '../shared/models/habit.interface';
 import { FrequencyType } from '../shared/enums/frequency-type.enum';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JournalService {
+  journal: Array<Habit>;
+  constructor() {
+    this.journal = this.getJournal();
+  }
 
-  constructor() { }
+  getJournalObs(): Observable<Array<Habit>> {
+    return of(this.journal);
+  }
+
+  createHabit(habit: Habit): void {
+    habit.completions = this.getCompletions();
+    this.journal.push(habit);
+    console.log(this.journal)
+  }
 
   getJournal(): Array<Habit> {
     return new Array(
