@@ -6,7 +6,7 @@ import { JournalService } from '../journal.service';
   selector: 'app-journal',
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JournalComponent implements OnInit {
   date: Date;
