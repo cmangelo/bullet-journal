@@ -1,4 +1,8 @@
-<h1>{{date | date:'MMMM y'}}</h1>
+<div class="d-flex">
+  <span class="fa fa-chevron-left clickable" (click)="incrementMonth(-1)"></span>
+  <h1>{{date | date:'MMMM y'}}</h1>  
+  <span class="fa fa-chevron-right clickable" (click)="incrementMonth(1)"></span>
+</div>
 <span class="fa fa-plus clickable" [routerLink]="'/habitEntry'"></span>
 
 <table>

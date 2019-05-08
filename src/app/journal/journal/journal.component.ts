@@ -22,7 +22,7 @@ export class JournalComponent implements OnInit {
     for(var i = 0; i < this.days.length; i++){
       this.days[i] = i + 1;
     }
-    this.date = new Date(2019,1,1);
+    this.date = new Date(2019,3,1);
     this.today = new Date().getDate();
   }
 
@@ -39,5 +39,10 @@ export class JournalComponent implements OnInit {
     } else {
       habit.completions[day] = true;
     }
+  }
+
+  incrementMonth(num: number) {
+    this.date.setMonth(this.date.getMonth() + num);
+    console.log(this.date)
   }
 }
