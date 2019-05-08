@@ -11,16 +11,19 @@ import { JournalService } from '../journal.service';
 export class JournalComponent implements OnInit {
   date: Date;
   habits: Array<Habit>;
-  days: any[];
+  days: any[] = [];
   today: number;
 
   constructor(private service: JournalService) { }
 
   ngOnInit() {
     this.service.getJournalObs().subscribe(data => this.habits = data);
-    this.days = new Array(this.getDaysOfMonth(2019,1));
-    for(var i = 0; i < this.days.length; i++){
-      this.days[i] = i + 1;
+    let x = new Array(this.getDaysOfMonth(2019,1));
+    for(var i = 0; i < x.length; i++){
+      this.days[i] = {
+        day: i + 1,
+        expanded: false
+      }
     }
     this.date = new Date(2019,3,1);
     this.today = new Date().getDate();
@@ -42,7 +45,8 @@ export class JournalComponent implements OnInit {
   }
 
   incrementMonth(num: number) {
-    this.date.setMonth(this.date.getMonth() + num);
+    this.date = new Date(this.date.getFullYear(), this.date.getMonth() + num);
+    
     console.log(this.date)
   }
 }
