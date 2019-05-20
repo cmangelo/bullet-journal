@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Habit } from '../shared/models/habit.interface';
 import { FrequencyType } from '../shared/enums/frequency-type.enum';
 import { Observable, of } from 'rxjs';
+import { ApiHelperService } from '../core/api-helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JournalService {
   journal: Array<Habit>;
-  constructor() {
+  constructor(private api: ApiHelperService) {
     this.journal = this.getJournal();
   }
 
@@ -20,6 +21,10 @@ export class JournalService {
     habit.completions = this.getCompletions();
     this.journal.push(habit);
     console.log(this.journal)
+  }
+
+  saveNote(note: string) {
+    return this.api.post('note', note);
   }
 
   getJournal(): Array<Habit> {

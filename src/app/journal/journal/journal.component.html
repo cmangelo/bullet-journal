@@ -37,7 +37,9 @@
       </tr>
       <tr *ngIf="day.expanded">
         <td colspan="15">
-          <textarea name="text" id="" rows="5" placeholder="Notes"></textarea>
+          <form (submit)="saveNote()">
+            <textarea name="text" id="" rows="5" placeholder="Notes" [(ngModel)]="note"></textarea>
+          </form>
         </td>
       </tr>
     </ng-container>

@@ -13,6 +13,7 @@ export class JournalComponent implements OnInit {
   habits: Array<Habit>;
   days: any[] = [];
   today: number;
+  note: string;
 
   constructor(private service: JournalService) { }
 
@@ -27,6 +28,12 @@ export class JournalComponent implements OnInit {
     }
     this.date = new Date(2019,3,1);
     this.today = new Date().getDate();
+  }
+
+  saveNote() {
+    this.service.saveNote(this.note).subscribe(res => {
+      console.log('success')
+    })
   }
 
   getDaysOfMonth(year: number, month: number): number {
