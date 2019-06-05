@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-login',
@@ -8,23 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
-  username: string;
+  email: string;
   password: string;
 
-  constructor(private service: LoginService, 
-              private router: Router) { }
+  constructor(private service: AccountService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   submit() {
     this.service.login({
-      username: this.username,
+      email: this.email,
       password: this.password
     }).subscribe(res => {
-        if (res.success) {
-          this.router.navigate(['/journal']);
-        }
+      this.router.navigate(['/journal']); //maybe move this to ngrx effects?
+
     });
   }
 
