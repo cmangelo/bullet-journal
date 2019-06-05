@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 const base = environment.base_url;
 
@@ -22,5 +22,9 @@ export class ApiHelperService {
 
   put<T>(url: string, body: any): Observable<T> {
     return this.http.put<T>(base + url, body);
+  }
+
+  patch<T>(url: string, body: any): Observable<T> {
+    return this.http.patch<T>(base + url, body);
   }
 }

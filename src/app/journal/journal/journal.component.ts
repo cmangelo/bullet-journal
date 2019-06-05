@@ -18,15 +18,15 @@ export class JournalComponent implements OnInit {
   constructor(private service: JournalService) { }
 
   ngOnInit() {
-    this.service.getJournalObs().subscribe(data => this.habits = data);
-    let x = new Array(this.getDaysOfMonth(2019,1));
-    for(var i = 0; i < x.length; i++){
+    this.service.getHabits().subscribe(data => this.habits = data);
+    let x = new Array(this.getDaysOfMonth(2019, 1));
+    for (var i = 0; i < x.length; i++) {
       this.days[i] = {
         day: i + 1,
         expanded: false
       }
     }
-    this.date = new Date(2019,3,1);
+    this.date = new Date(2019, 3, 1);
     this.today = new Date().getDate();
   }
 
@@ -53,7 +53,7 @@ export class JournalComponent implements OnInit {
 
   incrementMonth(num: number) {
     this.date = new Date(this.date.getFullYear(), this.date.getMonth() + num);
-    
+
     console.log(this.date)
   }
 }
