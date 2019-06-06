@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Habit } from 'src/app/shared/models/habit.interface';
 import { JournalService } from '../journal.service';
+import { HabitService } from 'src/app/shared/services/habit.service';
 
 @Component({
   selector: 'app-journal',
@@ -15,10 +16,15 @@ export class JournalComponent implements OnInit {
   today: number;
   note: string;
 
-  constructor(private service: JournalService) { }
+  constructor(private service: JournalService, private habitService: HabitService) { }
 
   ngOnInit() {
-    this.service.getHabits().subscribe(data => this.habits = data);
+    this.date = new Date(2019, 3, 1);
+    this.today = new Date().getDate();
+    this.habitService.getHabits(new Date(2019, 5, 1), new Date(2019, 5, 30)).subscribe(data => {
+      this.habits = data;
+      console.log(this.habits)
+    });
     let x = new Array(this.getDaysOfMonth(2019, 1));
     for (var i = 0; i < x.length; i++) {
       this.days[i] = {
@@ -26,8 +32,6 @@ export class JournalComponent implements OnInit {
         expanded: false
       }
     }
-    this.date = new Date(2019, 3, 1);
-    this.today = new Date().getDate();
   }
 
   saveNote() {
@@ -47,7 +51,7 @@ export class JournalComponent implements OnInit {
     if (habit.completions[day]) {
       delete habit.completions[day];
     } else {
-      habit.completions[day] = true;
+      // habit.completions[day] = true;
     }
   }
 

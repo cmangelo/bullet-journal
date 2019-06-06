@@ -10,7 +10,7 @@ import { ApiHelperService } from '../core/api/api-helper.service';
 export class JournalService {
   journal: Array<Habit>;
   constructor(private api: ApiHelperService) {
-    this.journal = this.getJournal();
+    // this.journal = this.getJournal();
   }
 
   getHabits() {
@@ -22,7 +22,7 @@ export class JournalService {
   }
 
   createHabit(habit: Habit): void {
-    habit.completions = this.getCompletions();
+    // habit.completions = this.getCompletions();
     this.journal.push(habit);
     console.log(this.journal)
   }
@@ -31,15 +31,15 @@ export class JournalService {
     return this.api.post('note', note);
   }
 
-  getJournal(): Array<Habit> {
-    return new Array(
-      <Habit>{ name: "Devo", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
-      <Habit>{ name: "Proverb", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
-      <Habit>{ name: "Leetcode", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
-      <Habit>{ name: "Book", frequency: FrequencyType.Weekly, start: new Date(2019, 1, 1), completions: this.getCompletions() },
-      <Habit>{ name: "Shoulder", frequency: FrequencyType.BiDaily, start: new Date(2019, 1, 1), completions: this.getCompletions() }
-    );
-  }
+  // getJournal(): Array<Habit> {
+  // return new Array(
+  //   <Habit>{ name: "Devo", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
+  //   <Habit>{ name: "Proverb", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
+  //   <Habit>{ name: "Leetcode", frequency: FrequencyType.Daily, start: new Date(2019, 1, 1), completions: this.getCompletions() },
+  //   <Habit>{ name: "Book", frequency: FrequencyType.Weekly, start: new Date(2019, 1, 1), completions: this.getCompletions() },
+  //   <Habit>{ name: "Shoulder", frequency: FrequencyType.BiDaily, start: new Date(2019, 1, 1), completions: this.getCompletions() }
+  // );
+  // }
 
   getCompletions(): { [key: number]: boolean } {
     return {

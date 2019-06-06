@@ -17,13 +17,13 @@ export class HabitEntryComponent implements OnInit {
   constructor(private service: JournalService) { }
 
   ngOnInit() {
-    
+
   }
 
   createHabit() {
-    const habit = <Habit> { name: this.name, frequency: FrequencyType.Daily, start: this.start}
+    // const habit = <Habit> { name: this.name, frequency: FrequencyType.Daily, start: this.start}
 
-    this.service.createHabit(habit);
+    // this.service.createHabit(habit);
   }
 
 }

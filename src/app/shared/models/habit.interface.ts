@@ -1,8 +1,14 @@
 import { FrequencyType } from '../enums/frequency-type.enum';
+import { Completion } from './completion.interface';
 
 export interface Habit {
-    name: string;
+    _id: string;
+    description: string;
+    owner: string;
     frequency: FrequencyType;
     start: Date;
-    completions: { [key: number]: boolean };
+    completions: Array<Completion>;
+    archived: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }

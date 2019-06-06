@@ -13,7 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { HttpConfigInterceptor } from './core/api/http-config-interceptors';
+import { HttpConfigInterceptor } from './core/auth/http-config-interceptors';
 import { AccountModule } from './account/account.module';
 
 @NgModule({
