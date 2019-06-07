@@ -9,6 +9,6 @@ export interface Habit {
     start: Date;
     completions: Array<Completion>;
     archived: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+    readonly createdAt: Date;
+    readonly updatedAt: Date;
 }
