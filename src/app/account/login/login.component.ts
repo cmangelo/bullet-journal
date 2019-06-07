@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AccountService } from '../account.service';
+import { AccountFacade } from '../+state/account.facade';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +12,14 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private service: AccountService,
+  constructor(private facade: AccountFacade,
     private router: Router) { }
 
   ngOnInit() {
   }
 
   submit() {
-    this.service.login({
-      email: this.email,
-      password: this.password
-    }).subscribe(res => {
-      this.router.navigate(['/journal']); //maybe move this to ngrx effects?
-
-    });
+    this.facade.login(this.email, this.password);
   }
 
 }

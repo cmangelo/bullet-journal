@@ -1,8 +1,21 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 
 import { User } from '../../shared/models/user.interface';
 
-const LoginRequest = createAction(
+const GetUser = createAction(
+    '[Account] Get User'
+);
+
+const GetUserSuccess = createAction(
+    '[API] Get User Success',
+    props<{ user: User }>()
+);
+
+const GetUserFailure = createAction(
+    '[API] Get User Failure',
+);
+
+const Login = createAction(
     '[Login] Login Request',
     props<{ email: string, password: string }>()
 );
@@ -31,3 +44,24 @@ const CreateAccountFailure = createAction(
     '[API] Create Account Failure',
     props<{ reason: string }>()
 );
+
+const Logout = createAction(
+    '[Account] Logout'
+);
+
+export const AccountActions = {
+    GetUser,
+    GetUserSuccess,
+    GetUserFailure,
+    Login,
+    LoginSuccess,
+    LoginFailure,
+    CreateAccount,
+    CreateAccountSuccess,
+    CreateAccountFailure,
+    Logout
+}
+
+const ActionsUntion = union(AccountActions);
+
+export type AccountActionsType = typeof ActionsUntion;

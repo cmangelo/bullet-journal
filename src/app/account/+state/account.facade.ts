@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AccountState } from './account.reducer';
+import { AccountActions } from './account.actions';
+import { accountQuery } from './account.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AccountFacade {
+    account$ = this.store.select(accountQuery.getAccount);
+    user$ = this.store.select(accountQuery.getUser);
+    isLoggedIn$ = this.store.select(accountQuery.getLoggedIn);
 
-    constructor(/**import account store here */) { }
+    constructor(private store: Store<AccountState>) { }
 
-    login(email: String, password: String) {
-        //this.store.dispatch(new LoginRequest(email, password));
+    login(email: string, password: string) {
+        this.store.dispatch(AccountActions.Login({ email, password }));
     }
 
-    createAccount(name: String, email: String, password: String) {
-        //this.store.dispatch(new CreateAccountRequest(name, email, password));
+    logout() {
+        this.store.dispatch(AccountActions.Logout());
+    }
+
+    createAccount(name: string, email: string, password: string) {
+        this.store.dispatch(AccountActions.CreateAccount({ name, email, password }));
+    }
+
+    getUser() {
+        this.store.dispatch(AccountActions.GetUser());
     }
 }
