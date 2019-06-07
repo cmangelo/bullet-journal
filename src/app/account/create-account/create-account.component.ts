@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AccountService } from '../account.service';
+import { AccountFacade } from '../+state/account.facade';
 
 @Component({
   selector: 'app-create-account',
@@ -8,10 +8,17 @@ import { AccountService } from '../account.service';
   styleUrls: ['./create-account.component.less']
 })
 export class CreateAccountComponent implements OnInit {
+  email: string;
+  name: string;
+  password: string;
 
-  constructor(private service: AccountService) { }
+  constructor(private facade: AccountFacade) { }
 
   ngOnInit() {
+  }
+
+  submit() {
+    this.facade.createAccount(this.name, this.email, this.password);
   }
 
 }

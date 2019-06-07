@@ -7,6 +7,7 @@ import { switchMap, map, catchError, tap } from 'rxjs/operators';
 import { AccountActions, AccountActionsType } from './account.actions';
 import { AccountService } from '../account.service';
 import { StorageService } from 'src/app/core/storage/storage.service';
+import { User } from 'src/app/shared/models/user.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -61,4 +62,16 @@ export class AccountEffects {
                 this.router.navigateByUrl('/login');
             })
         );
+
+    @Effect()
+    getUser$ = this.actions
+        .pipe(
+            ofType(AccountActions.GetUser.type),
+            switchMap(action => this.service.getUser()
+                .pipe(
+                    map(user => AccountActions.GetUserSuccess(user)),
+                    catchError(err => of(AccountActions.GetUserFailure(err)))
+                )
+            )
+        )
 }

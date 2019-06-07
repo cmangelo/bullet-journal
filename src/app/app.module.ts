@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { HttpConfigInterceptor } from './core/auth/http-config-interceptors';
 import { AccountModule } from './account/account.module';
+import { LandingModule } from './landing/landing.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AccountModule } from './account/account.module';
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AppEffects]),
+    LandingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }

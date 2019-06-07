@@ -14,16 +14,17 @@ export class AccountService {
 
   login(req: any): Observable<any> {
     return this.api.post('users/login', req)
-      .pipe(tap(res => this.storage.save('token', res.token)));
   }
 
   logout(req: any): Observable<any> {
     return this.api.post('users/logout', req)
-      .pipe(tap(() => this.storage.destroy('token')));
   }
 
   createAccount(req: any): Observable<any> {
     return this.api.post('users', req)
-      .pipe(tap(res => this.storage.save('token', res.token)));
+  }
+
+  getUser(): Observable<any> {
+    return this.api.get('users');
   }
 }

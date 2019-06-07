@@ -1,0 +1,10 @@
+<!-- might need to use a resolver here, when the page loads, it doesnt know about isLogged in yet, so it shows #login, but then
+almost instantly get isLoggedIn; it creates a flicker effect though and its ugly -->
+<ng-container *ngIf="isLoggedIn$ | async; else login">
+  <a [routerLink]="['/journal']">Get Started</a>
+</ng-container>
+
+<ng-template #login>
+  <a [routerLink]="['/login']">Login</a>
+  <a [routerLink]="['/createAccount']">CreateAccount</a>
+</ng-template>

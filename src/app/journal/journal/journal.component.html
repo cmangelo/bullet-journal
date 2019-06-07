@@ -1,15 +1,16 @@
 <div class="d-flex justify-content-center align-items-center">
-  <span class="fa fa-angle-left clickable" (click)="incrementMonth(-1)"></span>
-  <h1>{{date | date:'MMMM y'}}</h1>  
-  <span class="fa fa-angle-right clickable" (click)="incrementMonth(1)"></span>
-  <span class="fa fa-plus clickable" [routerLink]="'/habitEntry'"></span>
+  <span class="fas fa-angle-left clickable" (click)="incrementMonth(-1)"></span>
+  <h1>{{date | date:'MMMM y'}}</h1>
+  <span class="fas fa-angle-right clickable" (click)="incrementMonth(1)"></span>
+  <span class="fas fa-plus clickable" [routerLink]="'/habitEntry'"></span>
+  <a [routerLink]="['/']">Home</a>
 </div>
 
 <table>
   <thead>
     <tr>
       <th></th>
-      <th *ngFor="let habit of habits"><span style="writing-mode: vertical-lr">{{habit.name}}</span></th>
+      <th *ngFor="let habit of habits"><span style="writing-mode: vertical-lr"></span></th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,8 +21,8 @@
   </thead>
 
   <tbody>
-    <ng-container *ngFor="let day of days">      
-      <tr  [ngClass]="{'uneditable': day > today}">
+    <ng-container *ngFor="let day of days">
+      <tr [ngClass]="{'uneditable': day > today}">
         <td (click)="day.expanded = !day.expanded">{{day.day}}</td>
         <td *ngFor="let habit of habits" (click)="toggleDay(habit, day.day)" class="clickable">
           <span *ngIf="habit.completions[day.day]">

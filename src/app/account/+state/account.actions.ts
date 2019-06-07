@@ -13,6 +13,7 @@ const GetUserSuccess = createAction(
 
 const GetUserFailure = createAction(
     '[API] Get User Failure',
+    props<{ reason: string }>()
 );
 
 const Login = createAction(
