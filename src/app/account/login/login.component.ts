@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AccountFacade } from '../+state/account.facade';
 
@@ -9,17 +9,18 @@ import { AccountFacade } from '../+state/account.facade';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
+  loginForm = new FormGroup({
+    email: new FormControl('', Validators.email),
+    password: new FormControl('')
+  });
 
-  constructor(private facade: AccountFacade,
-    private router: Router) { }
+  constructor(private facade: AccountFacade) { }
 
   ngOnInit() {
   }
 
   submit() {
-    this.facade.login(this.email, this.password);
+    // this.facade.login(this.email, this.password);
   }
 
 }

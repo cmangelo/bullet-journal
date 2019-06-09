@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -14,7 +14,7 @@ import { AccountEffects } from './+state/account.effects';
   declarations: [LoginComponent, CreateAccountComponent],
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     AccountRoutingModule,
     StoreModule.forFeature('account', accountReducer, { initialState: initialAccountState }),
     EffectsModule.forFeature([AccountEffects])

@@ -20,4 +20,8 @@ export class HabitService {
     return this.api.get<Array<Habit>>('habits' + queryString);
   }
 
+  createHabit(habit: Habit): Observable<Habit> {
+    return this.api.post<Habit>('habits', habit);
+  }
+
 } 

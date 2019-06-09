@@ -63,6 +63,6 @@ export const AccountActions = {
     Logout
 }
 
-const ActionsUntion = union(AccountActions);
+const ActionsUnion = union(AccountActions);
 
-export type AccountActionsType = typeof ActionsUntion;
+export type AccountActionsType = typeof ActionsUnion;

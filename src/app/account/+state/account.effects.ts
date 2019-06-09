@@ -7,7 +7,6 @@ import { switchMap, map, catchError, tap } from 'rxjs/operators';
 import { AccountActions, AccountActionsType } from './account.actions';
 import { AccountService } from '../account.service';
 import { StorageService } from 'src/app/core/storage/storage.service';
-import { User } from 'src/app/shared/models/user.interface';
 
 @Injectable({
     providedIn: 'root'
