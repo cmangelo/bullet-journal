@@ -19,7 +19,8 @@ export const initialAccountState: Account = {
     status: 'INIT',
     user: {
         _id: '',
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         createdAt: null,
         updatedAt: null

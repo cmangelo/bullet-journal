@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { AccountState } from './account.reducer';
 import { AccountActions } from './account.actions';
 import { accountQuery } from './account.selectors';
+import { CreateAccountRequest } from '../models/create-account-request.interface';
+import { LoginRequest } from '../models/login-request.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -15,16 +17,16 @@ export class AccountFacade {
 
     constructor(private store: Store<AccountState>) { }
 
-    login(email: string, password: string) {
-        this.store.dispatch(AccountActions.Login({ email, password }));
+    login(req: LoginRequest) {
+        this.store.dispatch(AccountActions.Login(req));
     }
 
     logout() {
         this.store.dispatch(AccountActions.Logout());
     }
 
-    createAccount(name: string, email: string, password: string) {
-        this.store.dispatch(AccountActions.CreateAccount({ name, email, password }));
+    createAccount(req: CreateAccountRequest) {
+        this.store.dispatch(AccountActions.CreateAccount({ req }));
     }
 
     getUser() {

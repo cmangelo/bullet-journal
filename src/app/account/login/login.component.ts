@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    // this.facade.login(this.email, this.password);
+    this.facade.login(this.loginForm.value);
   }
 
 }

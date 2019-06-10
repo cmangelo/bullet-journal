@@ -44,7 +44,7 @@ export class AccountEffects {
     createAccount$ = this.actions
         .pipe(
             ofType(AccountActions.CreateAccount.type),
-            switchMap(({ email, name, password }) => this.service.createAccount({ email, name, password })
+            switchMap(({ req }) => this.service.createAccount(req)
                 .pipe(
                     map(res => AccountActions.CreateAccountSuccess(res)),
                     catchError(err => of(AccountActions.CreateAccountFailure(err)))
@@ -56,6 +56,7 @@ export class AccountEffects {
     logout$ = this.actions
         .pipe(
             ofType(AccountActions.Logout.type),
+            switchMap(() => this.service.logout()),
             tap(() => {
                 this.storage.destroy('token');
                 this.router.navigateByUrl('/login');
@@ -66,9 +67,9 @@ export class AccountEffects {
     getUser$ = this.actions
         .pipe(
             ofType(AccountActions.GetUser.type),
-            switchMap(action => this.service.getUser()
+            switchMap(() => this.service.getUser()
                 .pipe(
-                    map(user => AccountActions.GetUserSuccess(user)),
+                    map(user => AccountActions.GetUserSuccess({ user })),
                     catchError(err => of(AccountActions.GetUserFailure(err)))
                 )
             )

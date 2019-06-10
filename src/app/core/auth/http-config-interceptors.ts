@@ -39,9 +39,10 @@ export class HttpConfigInterceptor implements HttpInterceptor {
               this.storage.destroy("token");
               if (!this.storage.get("redirectOnLoginUrl"))
                 this.storage.save("redirectOnLoginUrl", this.router.url);
-              this.router.navigate(["/login"]);
+              this.router.navigate(["/"]);
             }
           }
-        }));
+        })
+      );
   }
 }

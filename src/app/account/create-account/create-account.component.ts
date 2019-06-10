@@ -31,8 +31,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   submit() {
-    // this.facade.createAccount(this.name, this.email, this.password);
-    console.log(this.createAccountForm.value)
+    this.facade.createAccount(this.createAccountForm.value);
   }
 
 }

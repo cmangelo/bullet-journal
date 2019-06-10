@@ -1,6 +1,7 @@
 import { createAction, props, union } from '@ngrx/store';
 
 import { User } from '../../shared/models/user.interface';
+import { CreateAccountRequest } from '../models/create-account-request.interface';
 
 const GetUser = createAction(
     '[Account] Get User'
@@ -33,7 +34,7 @@ const LoginFailure = createAction(
 
 const CreateAccount = createAction(
     '[Register] Create Account',
-    props<{ name: string, email: string, password: string }>()
+    props<{ req: CreateAccountRequest }>()
 );
 
 const CreateAccountSuccess = createAction(
