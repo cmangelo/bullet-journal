@@ -6,6 +6,8 @@ export interface Account {
     loggedIn: boolean;
     user: User;
     status: Status;
+    error: string;
+    loading: boolean;
 }
 
 export interface AccountState {
@@ -24,7 +26,9 @@ export const initialAccountState: Account = {
         email: '',
         createdAt: null,
         updatedAt: null
-    }
+    },
+    error: '',
+    loading: false
 }
 
 export function accountReducer(state: Account, action: AccountActionsType): Account {
@@ -33,26 +37,32 @@ export function accountReducer(state: Account, action: AccountActionsType): Acco
             return {
                 ...state,
                 loggedIn: true,
-                user: action.user
+                user: action.user,
+                error: '',
+                loading: false
             };
         case AccountActions.GetUserFailure.type:
             return initialAccountState;
         case AccountActions.Login.type:
         case AccountActions.CreateAccount.type:
-            return { ...state, status: 'IN_PROGRESS' };
+            return { ...state, status: 'IN_PROGRESS', loading: true };
         case AccountActions.CreateAccountSuccess.type:
         case AccountActions.LoginSuccess.type:
             return {
                 ...state,
                 loggedIn: true,
                 status: 'INIT',
-                user: action.user
+                user: action.user,
+                error: '',
+                loading: false
             };
         case AccountActions.CreateAccountFailure.type:
         case AccountActions.LoginFailure.type:
-            return { ...state, status: 'INIT' };
+            return { ...state, status: 'INIT', error: action.reason, loading: false };
         case AccountActions.Logout.type:
             return initialAccountState;
+        case AccountActions.ClearError.type:
+            return { ...state, error: '' };
         default:
             return state;
     }

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { AuthGuard } from '../core/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    // canActivate: [!AuthGuard]
   },
   {
     path: 'createAccount',

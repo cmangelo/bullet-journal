@@ -12,5 +12,13 @@
     Password
     <input type="password" formControlName="password">
   </label>
-  <button type="submit" [disabled]="!loginForm.valid">Sign In</button>
+  <button type="submit" [ngClass]="{'loading': loading$ | async}">
+    <span *ngIf="loading$ | async; else signIn">Signing In...</span>
+    <ng-template #signIn><span>Sign In</span></ng-template>
+  </button>
 </form>
+
+<div class="error" *ngIf="(error$ | async) as error">
+  <span>{{error}}</span>
+  <span class="far fa-times-circle pull-right clickable" (click)="clearError()"></span>
+</div>

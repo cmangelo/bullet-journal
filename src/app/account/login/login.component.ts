@@ -9,8 +9,11 @@ import { AccountFacade } from '../+state/account.facade';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
+  error$ = this.facade.error$;
+  loading$ = this.facade.loading$;
+
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.email),
+    email: new FormControl(''),
     password: new FormControl('')
   });
 
@@ -21,6 +24,10 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.facade.login(this.loginForm.value);
+  }
+
+  clearError() {
+    this.facade.clearError();
   }
 
 }

@@ -14,6 +14,8 @@ export class AccountFacade {
     account$ = this.store.select(accountQuery.getAccount);
     user$ = this.store.select(accountQuery.getUser);
     isLoggedIn$ = this.store.select(accountQuery.getLoggedIn);
+    error$ = this.store.select(accountQuery.getError);
+    loading$ = this.store.select(accountQuery.getLoading);
 
     constructor(private store: Store<AccountState>) { }
 
@@ -31,5 +33,9 @@ export class AccountFacade {
 
     getUser() {
         this.store.dispatch(AccountActions.GetUser());
+    }
+
+    clearError() {
+        this.store.dispatch(AccountActions.ClearError());
     }
 }

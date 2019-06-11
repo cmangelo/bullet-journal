@@ -51,6 +51,10 @@ const Logout = createAction(
     '[Account] Logout'
 );
 
+const ClearError = createAction(
+    '[Login] Clear Error',
+);
+
 export const AccountActions = {
     GetUser,
     GetUserSuccess,
@@ -61,7 +65,8 @@ export const AccountActions = {
     CreateAccount,
     CreateAccountSuccess,
     CreateAccountFailure,
-    Logout
+    Logout,
+    ClearError
 }
 
 const ActionsUnion = union(AccountActions);

@@ -25,7 +25,7 @@ export class AccountEffects {
             switchMap(({ email, password }) => this.service.login({ email, password })
                 .pipe(
                     map(res => AccountActions.LoginSuccess(res)),
-                    catchError(err => of(AccountActions.LoginFailure(err)))
+                    catchError(err => { console.log(err.message); return of(AccountActions.LoginFailure({ reason: err.error })) })
                 )
             )
         );

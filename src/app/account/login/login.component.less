@@ -4,7 +4,7 @@
     height: 100vh;
     background-size: contain;
     grid-row-gap: 25px;
-    grid-template-rows: 30% 1fr;
+    grid-template-rows: 30% 1fr 1fr;
 }
 
 .header {
@@ -53,5 +53,26 @@ form {
         border: none;
         border-radius: 3px;
         color: #fff;
+
+        &.loading {
+            opacity: .65;
+            color: #f1f1f1;
+        }
+    }
+}
+
+.error {
+    align-self: self-start;
+    max-width: 350px;
+    padding: 15px 15px;
+    border: 1px solid #d8dee2;
+    border-radius: 6px;
+    width: 100%;
+    background-color: #ffdce0;
+    color: #86181d;
+
+    span {
+        line-height: inherit;
+        margin-top: 3px;
     }
 }
