@@ -1,3 +1,5 @@
+@import "../../../styles/variables.less";
+
 :host {
     display: grid;
     justify-items: center;
@@ -24,9 +26,9 @@ form {
     align-self: self-start;
     max-width: 350px;
     padding: 25px 15px;
-    border: 1px solid #d8dee2;
+    border: @card-border;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: @white;
 
     label {
         width: 100%;
@@ -37,26 +39,26 @@ form {
             border-radius: 3px;
             outline: 0;
             margin: 0;
-            border: 1px solid #e6ecf0;
+            border: @input-border;
 
             &:focus {
-                border-color: #00c3ff;
+                border-color: focus-border;
             }
         }
     }
 
     button {
         margin-top: 15px;
-        background-color: #07b930;
+        background-color: @submit-button;
         width: 100%;
         padding: 9px;
         border: none;
         border-radius: 3px;
-        color: #fff;
+        color: @white;
 
         &.loading {
             opacity: .65;
-            color: #f1f1f1;
+            color: @button-text-loading;
         }
     }
 }
@@ -65,11 +67,11 @@ form {
     align-self: self-start;
     max-width: 350px;
     padding: 15px 15px;
-    border: 1px solid #d8dee2;
+    border: @card-border;
     border-radius: 6px;
     width: 100%;
-    background-color: #ffdce0;
-    color: #86181d;
+    background-color: @error-bg;
+    color: @error-text;
 
     span {
         line-height: inherit;
