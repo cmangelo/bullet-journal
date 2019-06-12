@@ -9,11 +9,14 @@ almost instantly get isLoggedIn; it creates a flicker effect though and its ugly
   <a [routerLink]="['/createAccount']">CreateAccount</a>
 </ng-template> -->
 
-<h1>Bullet</h1>
-
-<button>Create Account</button>
-<button>Sign In</button>
+<div class="content">
+  <h1>Bullet</h1>
+  <p class="blurb">Track the Past <br> Order the Present <br> Design the Future</p>
+  <button [routerLink]="['/createAccount']">Create Account</button>
+  <button [routerLink]="['/login']">Sign In</button>
+</div>
 
 <div class="img-container">
-  <img src="../../../assets/img/graph.jpg" alt="notebook">
+  <img src="../../../assets/img/notebook-2.jpg" alt="notebook">
+  <!-- <div class="layer"></div> -->
 </div>
