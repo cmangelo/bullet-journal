@@ -28,11 +28,11 @@ import { LandingModule } from './landing/landing.module';
     AppRoutingModule,
     JournalModule,
     HabitEntryModule,
+    LandingModule,
     AccountModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects]),
-    LandingModule,
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }

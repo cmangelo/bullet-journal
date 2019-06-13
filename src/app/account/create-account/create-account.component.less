@@ -1,0 +1,91 @@
+@import "../../../styles/variables.less";
+
+:host {
+    display: grid;
+    justify-items: center;
+    height: 100vh;
+    background-size: contain;
+    grid-row-gap: 25px;
+    grid-template-rows: 25% 1fr 1fr;
+
+    .header {
+        text-align: center;
+        align-self: self-end;
+        i {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+    
+        h2 {
+            font-weight: lighter;
+        }
+
+    }
+
+    form {
+        align-self: self-start;
+        max-width: 350px;
+        padding: 25px 15px;
+        border: @card-border;
+        border-radius: 6px;
+        background-color: @white;
+
+        label {
+            width: 100%;
+
+            i {
+                font-size: 14px;
+            }
+
+            input {
+                width: 100%;
+                padding: 4px;
+                border-radius: 3px;
+                outline: 0;
+                margin: 0;
+                border: @input-border;
+    
+                &:focus {
+                    border-color: focus-border;
+                }
+            }
+        }
+    }
+
+    button {
+        margin-top: 15px;
+        background-color: @submit-button;
+        width: 100%;
+        padding: 9px;
+        border: none;
+        border-radius: 3px;
+        color: @white;
+
+        &.loading {
+            opacity: .65;
+            color: @button-text-loading;
+            cursor: default;
+        }
+
+        &:disabled {
+            opacity:.45;
+            cursor: default;
+        }
+    }
+
+    .error {
+        align-self: self-start;
+        max-width: 350px;
+        padding: 15px 15px;
+        border: @card-border;
+        border-radius: 6px;
+        width: 100%;
+        background-color: @error-bg;
+        color: @error-text;
+    
+        span {
+            line-height: inherit;
+            margin-top: 3px;
+        }
+    }
+}

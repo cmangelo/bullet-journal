@@ -22,6 +22,10 @@
     <button class="btn btn-primary pull-right" (click)="submit()">Log In</button>
   </div>
 </form> -->
+<div class="header">
+  <i class="fas fa-tasks"></i>
+  <h2>Create An Account</h2>
+</div>
 
 <form [formGroup]="createAccountForm" (ngSubmit)="submit()">
   <label>
@@ -38,7 +42,22 @@
   </label>
   <label>
     Password
+    <i class="fas fa-info-circle clickable" placement="top" [ngbPopover]="pwReqs"></i>
     <input type="password" formControlName="password">
   </label>
-  <button type="submit" [disabled]="!createAccountForm.valid">Submit</button>
+  <button type="submit" class="clickable" [ngClass]="{'loading': loading$ | async}"
+    [disabled]="!createAccountForm.valid">
+    <span *ngIf="loading$ | async; else signIn">Submitting...</span>
+    <ng-template #signIn><span>Submit</span></ng-template>
+  </button>
 </form>
+
+<div class="error" *ngIf="(error$ | async) as error">
+  <span>{{error}}</span>
+  <span class="far fa-times-circle pull-right clickable" (click)="clearError()"></span>
+</div>
+
+<ng-template #pwReqs>
+  <li>At least 6 characters</li>
+  <li>At least one capital letter</li>
+</ng-template>

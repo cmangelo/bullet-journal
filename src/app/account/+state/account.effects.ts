@@ -25,7 +25,7 @@ export class AccountEffects {
             switchMap(({ email, password }) => this.service.login({ email, password })
                 .pipe(
                     map(res => AccountActions.LoginSuccess(res)),
-                    catchError(err => { console.log(err.message); return of(AccountActions.LoginFailure({ reason: err.error })) })
+                    catchError(err => of(AccountActions.LoginFailure({ reason: err.error })))
                 )
             )
         );
@@ -47,7 +47,7 @@ export class AccountEffects {
             switchMap(({ req }) => this.service.createAccount(req)
                 .pipe(
                     map(res => AccountActions.CreateAccountSuccess(res)),
-                    catchError(err => of(AccountActions.CreateAccountFailure(err)))
+                    catchError(err => of(AccountActions.CreateAccountFailure({ reason: err.error })))
                 )
             )
         );

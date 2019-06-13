@@ -10,9 +10,8 @@ import { passwordUppercaseValidator } from 'src/app/shared/form-validators/passw
   styleUrls: ['./create-account.component.less']
 })
 export class CreateAccountComponent implements OnInit {
-  email: string;
-  name: string;
-  password: string;
+  error$ = this.facade.error$;
+  loading$ = this.facade.loading$;
   createAccountForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl(''),
@@ -34,4 +33,7 @@ export class CreateAccountComponent implements OnInit {
     this.facade.createAccount(this.createAccountForm.value);
   }
 
+  clearError() {
+    this.facade.clearError();
+  }
 }
