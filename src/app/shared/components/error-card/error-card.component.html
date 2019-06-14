@@ -1,0 +1,4 @@
+<div class="error" *ngIf="(error$ | async) as error">
+  <span>{{error}}</span>
+  <span class="far fa-times-circle pull-right clickable" (click)="clearError.emit()"></span>
+</div>

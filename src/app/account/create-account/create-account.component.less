@@ -2,13 +2,18 @@
 
 :host {
     display: grid;
-    justify-items: center;
     height: 100vh;
     background-size: contain;
     grid-row-gap: 25px;
     grid-template-rows: 25% 1fr 1fr;
+    grid-template-columns: 1fr 350px 1fr;
+    grid-template-areas: 
+    ". header ."
+    ". form ."
+    ". error .";
 
     .header {
+        grid-area: header;
         text-align: center;
         align-self: self-end;
         i {
@@ -23,6 +28,7 @@
     }
 
     form {
+        grid-area: form;
         align-self: self-start;
         max-width: 350px;
         padding: 25px 15px;
@@ -70,22 +76,6 @@
         &:disabled {
             opacity:.45;
             cursor: default;
-        }
-    }
-
-    .error {
-        align-self: self-start;
-        max-width: 350px;
-        padding: 15px 15px;
-        border: @card-border;
-        border-radius: 6px;
-        width: 100%;
-        background-color: @error-bg;
-        color: @error-text;
-    
-        span {
-            line-height: inherit;
-            margin-top: 3px;
         }
     }
 }

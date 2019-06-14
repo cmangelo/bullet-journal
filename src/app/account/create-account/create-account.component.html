@@ -52,10 +52,8 @@
   </button>
 </form>
 
-<div class="error" *ngIf="(error$ | async) as error">
-  <span>{{error}}</span>
-  <span class="far fa-times-circle pull-right clickable" (click)="clearError()"></span>
-</div>
+<app-error-card [error$]="error$" (clearError)="clearError()"></app-error-card>
+
 
 <ng-template #pwReqs>
   <li>At least 6 characters</li>
