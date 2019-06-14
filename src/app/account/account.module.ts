@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
-import { StoreModule } from '@ngrx/store';
 import { accountReducer, initialAccountState } from './+state/account.reducer';
-import { EffectsModule } from '@ngrx/effects';
 import { AccountEffects } from './+state/account.effects';
 import { SharedModule } from '../shared/shared.module';
 

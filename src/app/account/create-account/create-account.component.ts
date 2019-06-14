@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountFacade } from '../+state/account.facade';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordUppercaseValidator } from 'src/app/shared/form-validators/password-uppercase.validator';
+import { CustomFormControl } from 'src/app/shared/classes/CustomFormControl';
 
 @Component({
   selector: 'app-create-account',
@@ -13,24 +14,43 @@ export class CreateAccountComponent implements OnInit {
   error$ = this.facade.error$;
   loading$ = this.facade.loading$;
   createAccountForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl(''),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [
-      Validators.minLength(6),
-      Validators.required,
-      passwordUppercaseValidator()
-    ])
+    firstName: new CustomFormControl(
+      'firstName',
+      'First Name',
+      'text',
+      null,
+      '',
+      Validators.required),
+    lastName: new CustomFormControl(
+      'lastName',
+      'Last Name',
+      'text',
+      null,
+      ''),
+    email: new CustomFormControl(
+      'email',
+      'Email',
+      'email',
+      null,
+      '',
+      [Validators.email, Validators.required]),
+    password: new CustomFormControl(
+      'password',
+      'Password',
+      'password',
+      null,
+      '',
+      [Validators.minLength(6), Validators.required, passwordUppercaseValidator()])
   });
-
 
   constructor(private facade: AccountFacade) { }
 
   ngOnInit() {
   }
 
-  submit() {
-    this.facade.createAccount(this.createAccountForm.value);
+  submit(form) {
+    console.log(form)
+    this.facade.createAccount(form.value);
   }
 
   clearError() {

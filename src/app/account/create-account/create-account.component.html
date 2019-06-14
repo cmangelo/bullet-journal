@@ -1,33 +1,9 @@
-<!-- <form>
-  <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" name="name" id="name" placeholder="Name" class="form-control" [(ngModel)]="name">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="username" class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" name="username" id="username" placeholder="Username" class="form-control" [(ngModel)]="email">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="password" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" name="password" id="password" placeholder="Password" class="form-control"
-        [(ngModel)]="password">
-    </div>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary pull-right" (click)="submit()">Log In</button>
-  </div>
-</form> -->
 <div class="header">
   <i class="fas fa-tasks"></i>
   <h2>Create An Account</h2>
 </div>
 
-<form [formGroup]="createAccountForm" (ngSubmit)="submit()">
+<!-- <form [formGroup]="createAccountForm" (ngSubmit)="submit()">
   <label>
     First Name
     <input type="text" formControlName="firstName">
@@ -50,12 +26,9 @@
     <span *ngIf="loading$ | async; else signIn">Submitting...</span>
     <ng-template #signIn><span>Submit</span></ng-template>
   </button>
-</form>
+</form> -->
+
+<app-basic-form [formGroupIn]="createAccountForm" buttonLoadingText="Submitting..." buttonText="Submit"
+  [loading$]="loading$" (submit)="submit($event)"></app-basic-form>
 
 <app-error-card [error$]="error$" (clearError)="clearError()"></app-error-card>
-
-
-<ng-template #pwReqs>
-  <li>At least 6 characters</li>
-  <li>At least one capital letter</li>
-</ng-template>
