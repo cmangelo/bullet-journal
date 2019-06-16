@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class BasicFormComponent implements OnInit {
   @Input() loading$: Observable<boolean>;
   @Input() buttonText: string;
   @Input() buttonLoadingText: string;
-  @Output() submit = new EventEmitter<FormGroup>();
+  @Output() submitForm = new EventEmitter<any>();
   formGroupControls: Array<any>;
 
   constructor() { }

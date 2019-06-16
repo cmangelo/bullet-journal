@@ -1,19 +1,17 @@
-<form [formGroup]="formGroupIn" (ngSubmit)="submit.emit(formGroupIn)">
+<form [formGroup]="formGroupIn" (ngSubmit)="submitForm.emit(formGroupIn)">
   <ng-container *ngFor="let control of formGroupControls">
     <label>
-      {{control.title}}
-      <i class="fas fa-info-circle clickable" placement="top" [ngbPopover]="pwReqs"></i>
+      {{control.label}}
+      <i *ngIf="control.info" class="fas fa-info-circle clickable" placement="top" [ngbPopover]="info"></i>
       <input [type]="control.inputType" [formControlName]="control.name">
     </label>
+
+    <ng-template #info>
+      <li *ngFor="let blurb of control.info">{{blurb}}</li>
+    </ng-template>
   </ng-container>
   <button type="submit" class="clickable" [ngClass]="{'loading': loading$ | async}" [disabled]="!formGroupIn.valid">
     <span *ngIf="loading$ | async; else signIn">{{buttonLoadingText}}</span>
     <ng-template #signIn><span>{{buttonText}}</span></ng-template>
   </button>
 </form>
-
-
-<ng-template #pwReqs>
-  <li>At least 6 characters</li>
-  <li>At least one capital letter</li>
-</ng-template>

@@ -3,32 +3,7 @@
   <h2>Create An Account</h2>
 </div>
 
-<!-- <form [formGroup]="createAccountForm" (ngSubmit)="submit()">
-  <label>
-    First Name
-    <input type="text" formControlName="firstName">
-  </label>
-  <label>
-    Last Name
-    <input type="text" formControlName="lastName">
-  </label>
-  <label>
-    Email
-    <input type="email" formControlName="email">
-  </label>
-  <label>
-    Password
-    <i class="fas fa-info-circle clickable" placement="top" [ngbPopover]="pwReqs"></i>
-    <input type="password" formControlName="password">
-  </label>
-  <button type="submit" class="clickable" [ngClass]="{'loading': loading$ | async}"
-    [disabled]="!createAccountForm.valid">
-    <span *ngIf="loading$ | async; else signIn">Submitting...</span>
-    <ng-template #signIn><span>Submit</span></ng-template>
-  </button>
-</form> -->
-
 <app-basic-form [formGroupIn]="createAccountForm" buttonLoadingText="Submitting..." buttonText="Submit"
-  [loading$]="loading$" (submit)="submit($event)"></app-basic-form>
+  [loading$]="loading$" (submitForm)="submit($event)"></app-basic-form>
 
 <app-error-card [error$]="error$" (clearError)="clearError()"></app-error-card>

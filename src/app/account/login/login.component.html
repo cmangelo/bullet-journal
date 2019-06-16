@@ -3,19 +3,7 @@
   <h2>Sign in to Bullet</h2>
 </div>
 
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
-  <label>
-    Email
-    <input type="email" formControlName="email">
-  </label>
-  <label>
-    Password
-    <input type="password" formControlName="password">
-  </label>
-  <button type="submit" [ngClass]="{'loading': loading$ | async}">
-    <span *ngIf="loading$ | async; else signIn">Signing In...</span>
-    <ng-template #signIn><span>Sign In</span></ng-template>
-  </button>
-</form>
+<app-basic-form [formGroupIn]="loginForm" [loading$]="loading$" buttonLoadingText="Signing in..." buttonText="Sign In"
+  (submitForm)="submit($event)"></app-basic-form>
 
 <app-error-card [error$]="error$" (clearError)="clearError()"></app-error-card>

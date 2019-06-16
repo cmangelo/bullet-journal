@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
+import { CustomFormControl } from 'src/app/shared/classes/CustomFormControl';
+import { passwordUppercaseValidator } from 'src/app/shared/form-validators/password-uppercase.validator';
 
 import { AccountFacade } from '../+state/account.facade';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { passwordUppercaseValidator } from 'src/app/shared/form-validators/password-uppercase.validator';
-import { CustomFormControl } from 'src/app/shared/classes/CustomFormControl';
 
 @Component({
   selector: 'app-create-account',
@@ -38,7 +38,7 @@ export class CreateAccountComponent implements OnInit {
       'password',
       'Password',
       'password',
-      null,
+      ['At least 6 characters', 'At least one capital letter'],
       '',
       [Validators.minLength(6), Validators.required, passwordUppercaseValidator()])
   });
@@ -48,8 +48,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(form) {
-    console.log(form)
+  submit(form: FormGroup) {
     this.facade.createAccount(form.value);
   }
 

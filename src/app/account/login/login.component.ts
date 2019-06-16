@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 
 import { AccountFacade } from '../+state/account.facade';
+import { CustomFormControl } from '../../shared/classes/CustomFormControl';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,21 @@ import { AccountFacade } from '../+state/account.facade';
 export class LoginComponent implements OnInit {
   error$ = this.facade.error$;
   loading$ = this.facade.loading$;
-
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new CustomFormControl(
+      'email',
+      'Email',
+      'email',
+      null,
+      '',
+      Validators.required),
+    password: new CustomFormControl(
+      'password',
+      'Password',
+      'password',
+      null,
+      '',
+      Validators.required)
   });
 
   constructor(private facade: AccountFacade) { }
@@ -22,8 +34,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit() {
-    this.facade.login(this.loginForm.value);
+  submit(form: FormGroup) {
+    this.facade.login(form.value);
   }
 
   clearError() {

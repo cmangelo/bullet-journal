@@ -1,15 +1,15 @@
 import { FormControl, AsyncValidatorFn, AbstractControlOptions, ValidatorFn } from '@angular/forms';
 
 export class CustomFormControl extends FormControl {
+    name: string;
     label: string;
-    title: string;
     inputType: string;
     info: Array<string>;
 
-    constructor(label: string, title: string, inputType: string, info?: Array<string> | null, formState?: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null) {
+    constructor(name: string, label: string, inputType: string, info?: Array<string> | null, formState?: any, validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null, asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null) {
         super(formState, validatorOrOpts, asyncValidator);
+        this.name = name;
         this.label = label;
-        this.title = title;
         this.inputType = inputType;
         this.info = info;
     }
