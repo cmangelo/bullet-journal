@@ -1,13 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Habit } from 'src/app/shared/models/habit.interface';
-import { JournalService } from '../journal.service';
 import { HabitService } from 'src/app/shared/services/habit.service';
+
+import { JournalService } from '../journal.service';
 
 @Component({
   selector: 'app-journal',
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.less'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JournalComponent implements OnInit {
   date: Date;

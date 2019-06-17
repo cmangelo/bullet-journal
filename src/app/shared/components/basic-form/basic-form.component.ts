@@ -24,7 +24,6 @@ export class BasicFormComponent implements OnInit {
 
   formGroupToIterable() {
     this.formGroupControls = Object.keys(this.formGroupIn.controls).map(key => this.formGroupIn.controls[key]);
-    console.log(this.formGroupControls)
   }
 
 }
