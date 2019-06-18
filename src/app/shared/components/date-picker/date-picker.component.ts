@@ -11,7 +11,7 @@ import { DateParams } from '../../models/date-params.interface';
 export class DatePickerComponent implements OnInit {
   @Input() dateParams: DateParams;
   @Input() date: Date;
-  @Output() dateChange = new EventEmitter();
+  @Output() dateChange = new EventEmitter<Date>();
 
   constructor() { }
 
@@ -20,5 +20,6 @@ export class DatePickerComponent implements OnInit {
 
   incrementMonth(inc: number) {
     this.date = new Date(this.date.getFullYear(), this.date.getMonth() + inc);
+    this.dateChange.emit(this.date);
   }
 }

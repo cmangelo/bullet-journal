@@ -5,6 +5,7 @@
   <span class="fas fa-plus clickable" [routerLink]="'/habitEntry'"></span>
   <a [routerLink]="['/']">Home</a>
 </div> -->
+<app-date-picker [date]="date" (dateChange)="dateChange($event)"></app-date-picker>
 
 <table>
   <thead>

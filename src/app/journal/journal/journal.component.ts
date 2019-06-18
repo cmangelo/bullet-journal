@@ -45,6 +45,10 @@ export class JournalComponent implements OnInit {
     return new Date(year, month, 0).getDate();
   }
 
+  dateChange(date: Date) {
+
+  }
+
   toggleDay(habit: Habit, day: number) {
     if (day > this.today)
       return;
