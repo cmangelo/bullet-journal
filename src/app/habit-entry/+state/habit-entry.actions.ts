@@ -1,9 +1,11 @@
 import { createAction, props, union } from '@ngrx/store';
-import { Habit } from 'src/app/shared/models/habit.interface';
+
+import { Habit } from '../../shared/models/habit.interface';
+import { HabitEntryRequest } from '../models/habit-entry-request.interface';
 
 const CreateHabit = createAction(
     '[Habit Entry] Create Habit',
-    props<{ habit: Habit }>()
+    props<{ habit: HabitEntryRequest }>()
 );
 
 const CreateHabitSuccess = createAction(
