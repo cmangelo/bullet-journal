@@ -1,0 +1,54 @@
+@import "../../../styles/variables.less";
+
+:host {
+    display: grid;
+    grid-template-rows: 20% auto;
+
+
+    form {
+        max-width: 350px;
+        padding: 25px 15px;
+        border: @input-border;
+        border-radius: 6px;
+        background-color: @white;
+    
+        label {
+            width: 100%;
+    
+            input {
+                width: 100%;
+                padding: 4px;
+                border-radius: 3px;
+                outline: 0;
+                margin: 0;
+                border: @input-border;
+    
+                &:focus {
+                    border-color: focus-border;
+                }
+            }
+        }
+    
+        button {
+            margin-top: 15px;
+            background-color: @submit-button;
+            width: 100%;
+            padding: 9px;
+            border: none;
+            border-radius: 3px;
+            color: @white;
+    
+            &.loading {
+                opacity: .65;
+                color: @button-text-loading;
+                cursor: default;
+            }
+    
+            
+            &:disabled {
+                opacity:.45;
+                cursor: default;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@
   <h2>Create An Account</h2>
 </div>
 
-<app-basic-form [formGroupIn]="createAccountForm" buttonLoadingText="Submitting..." buttonText="Submit"
+<app-basic-form [formGroupIn]="createAccountForm" buttonLoadingText="Signing up..." buttonText="Sign Up"
   [loading$]="loading$" (submitForm)="submit($event)"></app-basic-form>
 
 <app-error-card [error$]="error$" (clearError)="clearError()"></app-error-card>

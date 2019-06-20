@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions, ofType } from '@ngrx/effects';
-import { HabitService } from 'src/app/shared/services/habit.service';
-import { HabitEntryActionsType, HabitEntryActions } from './habit-entry.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { HabitService } from 'src/app/shared/services/habit.service';
+
+import { HabitEntryActions, HabitEntryActionsType } from './habit-entry.actions';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,7 @@ export class HabitEntryEffects {
     @Effect()
     createHabit$ = this.actions
         .pipe(
-            ofType(HabitEntryActions.CreateHabit.type),
+            ofType(HabitEntryActions.CreateHabit),
             switchMap(({ habit }) => this.service.createHabit(habit)
                 .pipe(
                     map(habit => HabitEntryActions.CreateHabitSuccess({ habit })),
