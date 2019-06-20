@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-// import * as moment from 'moment';
+import { ApiHelperService } from 'src/app/core/api/api-helper.service';
+import { HabitEntryRequest } from 'src/app/habit-entry/models/habit-entry-request.interface';
 
 import { Habit } from '../models/habit.interface';
-import { ApiHelperService } from 'src/app/core/api/api-helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class HabitService {
     return this.api.get<Array<Habit>>('habits' + queryString);
   }
 
-  createHabit(habit: Habit): Observable<Habit> {
+  createHabit(habit: HabitEntryRequest): Observable<Habit> {
     return this.api.post<Habit>('habits', habit);
   }
 

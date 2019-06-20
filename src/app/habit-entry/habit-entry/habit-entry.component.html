@@ -1,9 +1,23 @@
 <button class="btn btn-primary" [routerLink]="'/'">Home</button>
-<!-- <form name=""> -->
-<!-- <input type="text" placeholder="Title" [(ngModel)]="name" name="name"> -->
-<!-- <input type="date" name="date" id="date" [(ngModel)]="start"> -->
-<!-- <select name="" id="" name="freq">
-    <option *ngFor="let type of Object.keys(frequencyTypes)" [(ngModel)]="frequencyType">{{type}}</option>
-  </select> -->
-<button class="btn btn-primary" (click)="createHabit()">Create</button>
-<!-- </form> -->
+<form [formGroup]="habitEntryForm" (ngSubmit)="submit()">
+  <label>
+    Title
+    <input type="text" formControlName="title">
+  </label>
+  <label>
+    Description
+    <input type="text" formControlName="description">
+  </label>
+  <label>
+    Frequency
+    <!-- <select formControlName="frequencyType">
+      <option *ngFor="let type of frequencyTypes">{{type}}</option>
+    </select> -->
+    <input type="number" formControlName="frequencyType">
+  </label>
+  <label>
+    Start Date
+    <input type="date" formControlName="startDate">
+  </label>
+  <button class="btn btn-primary" type="submit">Create</button>
+</form>
