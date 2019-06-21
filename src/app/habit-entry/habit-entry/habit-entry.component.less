@@ -29,7 +29,47 @@
             }
         }
     
-        button {
+        .radios {
+            display: flex;
+            overflow: hidden;
+
+            input {
+                position: absolute !important;
+                clip: rect(0,0,0,0);
+                height: 1px;
+                width: 1px;
+                border: 0;
+                overflow: hidden;
+
+                &:checked + label {
+                    background-color: @input-border-color;
+                }
+            }
+
+            label {
+                color: #010101;
+                font-size: 14px;
+                line-height: 1;
+                text-align: center;
+                padding: 11px;
+                border: @input-border;
+                border-right: none;
+                cursor: pointer;
+
+                &:first-of-type {
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+
+                &:last-of-type {
+                    border-right: @input-border;
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
+            }
+        }
+
+        button.submit {
             margin-top: 15px;
             background-color: @submit-button;
             width: 100%;

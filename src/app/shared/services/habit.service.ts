@@ -21,7 +21,6 @@ export class HabitService {
   }
 
   createHabit(habit: HabitEntryRequest): Observable<Habit> {
-    console.log(habit)
     return this.api.post<Habit>('habits', habit);
   }
 

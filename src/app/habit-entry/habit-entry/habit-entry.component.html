@@ -11,13 +11,23 @@
   </label>
   <label>
     Frequency
-    <input type="number" formControlName="frequency">
+    <div class="radios">
+      <input type="radio" id="r1" value="1" formControlName="frequency" checked>
+      <label for="r1">Daily</label>
+      <input type="radio" id="r2" value="2" formControlName="frequency">
+      <label for="r2">Bi-Daily</label>
+      <input type="radio" id="r3" value="3" formControlName="frequency">
+      <label for="r3">Weekly</label>
+      <input type="radio" id="r4" value="4" formControlName="frequency">
+      <label for="r4">Monthly</label>
+    </div>
   </label>
   <label>
     Start Date
     <input type="date" formControlName="startDate">
   </label>
-  <button type="submit" class="clickable" [ngClass]="{'loading': loading$ | async}" [disabled]="!habitEntryForm.valid">
+  <button type="submit" class="submit clickable" [ngClass]="{'loading': loading$ | async}"
+    [disabled]="!habitEntryForm.valid">
     <span *ngIf="loading$ | async; else create">Creating...</span>
     <ng-template #create><span>Create</span></ng-template>
   </button>
