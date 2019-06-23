@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiHelperService } from 'src/app/core/api/api-helper.service';
-import { HabitEntryRequest } from 'src/app/habit-entry/models/habit-entry-request.interface';
+import { HabitEntryRequest } from 'src/app/habits/models/habit-entry-request.interface';
 
-import { Habit } from '../models/habit.interface';
+import { Habit } from '../shared/models/habit.interface';
 
 @Injectable({
   providedIn: 'root'

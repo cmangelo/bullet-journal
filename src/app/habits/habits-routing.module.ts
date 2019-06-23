@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { HabitEntryComponent } from './habit-entry/habit-entry.component';
+import { HabitsComponent } from './habits/habits.component';
+
+const routes: Routes = [
+  {
+    path: 'habitEntry',
+    component: HabitEntryComponent
+  },
+  {
+    path: 'habits',
+    component: HabitsComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -18,12 +18,12 @@ const CreateHabitFailure = createAction(
     props<{ reason: string }>()
 );
 
-export const HabitEntryActions = {
+export const HabitsActions = {
     CreateHabit,
     CreateHabitSuccess,
     CreateHabitFailure
 };
 
-const ActionsUnion = union(HabitEntryActions);
+const ActionsUnion = union(HabitsActions);
 
-export type HabitEntryActionsType = typeof ActionsUnion;
+export type HabitsActionsType = typeof ActionsUnion;

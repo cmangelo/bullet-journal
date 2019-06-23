@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { HabitService } from 'src/app/habits/habit.service';
 import { Habit } from 'src/app/shared/models/habit.interface';
-import { HabitService } from 'src/app/shared/services/habit.service';
 
 import { JournalService } from '../journal.service';
 

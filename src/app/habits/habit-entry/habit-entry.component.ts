@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { HabitEntryFacade } from '../+state/habit-entry.facade';
+import { HabitEntryFacade } from '../+state/habits.facade';
 
 @Component({
   selector: 'app-habit-entry',

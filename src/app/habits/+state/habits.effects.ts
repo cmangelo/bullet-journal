@@ -3,26 +3,26 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { HabitService } from 'src/app/shared/services/habit.service';
+import { HabitService } from 'src/app/habits/habit.service';
 
-import { HabitEntryActions, HabitEntryActionsType } from './habit-entry.actions';
+import { HabitsActions, HabitsActionsType } from './habits.actions';
 
 @Injectable({
     providedIn: 'root'
 })
-export class HabitEntryEffects {
+export class HabitsEffects {
 
-    constructor(private actions: Actions<HabitEntryActionsType>,
+    constructor(private actions: Actions<HabitsActionsType>,
         private service: HabitService, private router: Router) { }
 
     @Effect()
     createHabit$ = this.actions
         .pipe(
-            ofType(HabitEntryActions.CreateHabit),
+            ofType(HabitsActions.CreateHabit),
             switchMap(({ habit }) => this.service.createHabit(habit)
                 .pipe(
-                    map(habit => HabitEntryActions.CreateHabitSuccess({ habit })),
-                    catchError(err => of(HabitEntryActions.CreateHabitFailure(err)))
+                    map(habit => HabitsActions.CreateHabitSuccess({ habit })),
+                    catchError(err => of(HabitsActions.CreateHabitFailure(err)))
                 )
             )
         );
@@ -30,7 +30,7 @@ export class HabitEntryEffects {
     @Effect({ dispatch: false })
     createHabitSuccess$ = this.actions
         .pipe(
-            ofType(HabitEntryActions.CreateHabitSuccess),
+            ofType(HabitsActions.CreateHabitSuccess),
             tap(() => this.router.navigateByUrl('/journal'))
         );
 }
