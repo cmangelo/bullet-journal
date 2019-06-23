@@ -11,18 +11,18 @@ import { HabitEntryFacade } from '../+state/habit-entry.facade';
 export class HabitEntryComponent implements OnInit {
   loading$ = this.facade.loading$;
   error$ = this.facade.error$;
+  date = new Date();
 
   habitEntryForm = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl(''),
     frequency: new FormControl('1', Validators.required),
-    startDate: new FormControl(new Date(), Validators.required)
+    startDate: new FormControl(new Date().toISOString().substring(0, 10), Validators.required)
   });
 
   constructor(private facade: HabitEntryFacade) { }
 
   ngOnInit() {
-
   }
 
   submit() {

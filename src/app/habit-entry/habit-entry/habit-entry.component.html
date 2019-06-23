@@ -1,5 +1,8 @@
 <!-- <button class="btn btn-primary" [routerLink]="'/'">Home</button> -->
-<div></div>
+<div class="header">
+  <i class="fas fa-tasks"></i>
+  <h2>Create a Habit</h2>
+</div>
 <form [formGroup]="habitEntryForm" (ngSubmit)="submit()">
   <label>
     Title
@@ -24,11 +27,11 @@
   </label>
   <label>
     Start Date
-    <input type="date" formControlName="startDate">
+    <input type="date" formControlName="startDate" [placeholder]="date | date: 'shortDate'">
   </label>
   <button type="submit" class="submit clickable" [ngClass]="{'loading': loading$ | async}"
     [disabled]="!habitEntryForm.valid">
     <span *ngIf="loading$ | async; else create">Creating...</span>
-    <ng-template #create><span>Create</span></ng-template>
+    <ng-template #create><span>Create Habit</span></ng-template>
   </button>
 </form>
