@@ -3,6 +3,21 @@ import { createAction, props, union } from '@ngrx/store';
 import { Habit } from '../../shared/models/habit.interface';
 import { HabitEntryRequest } from '../models/habit-entry-request.interface';
 
+const GetHabits = createAction(
+    '[Habits] Get Habits',
+    props<{ fromDate?: Date, toDate?: Date }>()
+);
+
+const GetHabitsSuccess = createAction(
+    '[API] Get Habits Success',
+    props<{ habits: Array<Habit> }>()
+);
+
+const GetHabitsFailure = createAction(
+    '[API] Get Habits Failure',
+    props<{ reason: string }>()
+);
+
 const CreateHabit = createAction(
     '[Habit Entry] Create Habit',
     props<{ habit: HabitEntryRequest }>()
@@ -19,6 +34,9 @@ const CreateHabitFailure = createAction(
 );
 
 export const HabitsActions = {
+    GetHabits,
+    GetHabitsSuccess,
+    GetHabitsFailure,
     CreateHabit,
     CreateHabitSuccess,
     CreateHabitFailure

@@ -16,6 +16,17 @@ export class HabitsEffects {
         private service: HabitService, private router: Router) { }
 
     @Effect()
+    getHabits$ = this.actions
+        .pipe(
+            ofType(HabitsActions.GetHabits),
+            switchMap(({ fromDate, toDate }) => this.service.getHabits(fromDate, toDate)
+                .pipe(
+                    map(habits => HabitsActions.GetHabitsSuccess({ habits })),
+                    catchError(err => of(HabitsActions.GetHabitsFailure(err)))
+                ))
+        );
+
+    @Effect()
     createHabit$ = this.actions
         .pipe(
             ofType(HabitsActions.CreateHabit),
