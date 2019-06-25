@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { HabitEntryFacade } from '../+state/habits.facade';
+import { HabitsFacade } from '../+state/habits.facade';
 
 @Component({
   selector: 'app-habit-entry',
@@ -20,7 +20,7 @@ export class HabitEntryComponent implements OnInit {
     startDate: new FormControl(new Date().toISOString().substring(0, 10), Validators.required)
   });
 
-  constructor(private facade: HabitEntryFacade) { }
+  constructor(private facade: HabitsFacade) { }
 
   ngOnInit() {
   }

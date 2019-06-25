@@ -8,6 +8,7 @@ export const getLoading = createSelector(getHabitState, (habits: Habits) => habi
 export const getError = createSelector(getHabitState, (habits: Habits) => habits.error);
 
 export const habitsQuery = {
+    getHabits,
     getLoading,
     getError
 };

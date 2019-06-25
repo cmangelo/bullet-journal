@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
+import { HabitsFacade } from '../+state/habits.facade';
 
 @Component({
   selector: 'app-habits',
@@ -7,10 +9,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HabitsComponent implements OnInit {
+  habits$ = this.facade.habits$;
 
-  constructor() { }
+  constructor(private facade: HabitsFacade) { }
 
   ngOnInit() {
+    this.facade.getHabits();
   }
 
 }

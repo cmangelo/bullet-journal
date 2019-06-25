@@ -1,3 +1,5 @@
-<p>
-  habits works!
-</p>
+<div *ngIf="habits$ | async as habits">
+  <div *ngFor="let habit of habits">
+    <span>{{habit.title}}</span>
+  </div>
+</div>
