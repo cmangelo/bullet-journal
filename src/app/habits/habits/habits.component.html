@@ -1,5 +1,8 @@
 <div *ngIf="habits$ | async as habits">
-  <div *ngFor="let habit of habits">
-    <span>{{habit.title}}</span>
+  <div *ngFor="let habit of habits" class="habit">
+    <span class="title">{{habit.title}}</span>
+    <span>{{habit.description}}</span>
+    <span>{{frequency[habit.frequency]}}</span>
+    <span>{{habit.startDate | date: 'shortDate'}}</span>
   </div>
 </div>

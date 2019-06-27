@@ -7,7 +7,7 @@ export interface Habit {
     description: string;
     owner: string;
     frequency: FrequencyType;
-    start: Date;
+    startDate: Date;
     completions: Array<Completion>;
     archived: boolean;
     readonly createdAt: Date;
