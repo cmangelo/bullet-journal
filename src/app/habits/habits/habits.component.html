@@ -1,16 +1,31 @@
-<div *ngIf="habits$ | async as habits">
-  <div *ngFor="let habit of habits" class="habit">
-    <div class="freq-icon-container">
-      <i class="far fa-calendar-check"></i>
-      <span><i class="fa fa-check"></i> 23</span>
-    </div>
-    <div class="info-container">
-      <span class="title">{{habit.title}}</span>
-      <span>{{habit.description}}</span>
-      <div class="details">
-        <span>{{frequency[habit.frequency]}}</span>
-        <span class="date">Since {{habit.startDate | date: 'shortDate'}}</span>
+<h1>My Habits</h1>
+
+<ng-container *ngIf="habits$ | async as habits; else noHabits">
+  <div class="habits">
+    <div *ngFor="let habit of habits" class="habit">
+      <div class="freq-icon-container">
+        <i class="far fa-calendar-check"></i>
+        <span><i class="fa fa-check"></i> 23</span>
+      </div>
+      <div class="info-container">
+        <span class="title">{{habit.title}}</span>
+        <span>{{habit.description}}</span>
+        <div class="details">
+          <span>{{frequency[habit.frequency]}}</span>
+          <span class="date">Since {{habit.startDate | date: 'shortDate'}}</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #noHabits *ngIf="!(loading$ | async); else loading">
+  <h3>You haven't created any habits yet!</h3>
+  <button [routerLink]="'/habitEntry'">Get Started!</button>
+</ng-template>
+
+<ng-template #loading>
+  <div class="mar-top-md">
+    <app-loading-animation></app-loading-animation>
+  </div>
+</ng-template>

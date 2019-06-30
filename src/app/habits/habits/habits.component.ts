@@ -11,6 +11,7 @@ import { FrequencyType } from '../../shared/enums/frequency-type.enum';
 })
 export class HabitsComponent implements OnInit {
   habits$ = this.facade.habits$;
+  loading$ = this.facade.loading$;
   frequency = FrequencyType;
 
   constructor(private facade: HabitsFacade) { }
