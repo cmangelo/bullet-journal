@@ -1,4 +1,7 @@
-<h1>My Habits</h1>
+<div class="header">
+  <h1>My Habits</h1>
+  <span class="fas fa-edit fa-2x clickable" [routerLink]="'/habitEntry'"></span>
+</div>
 
 <div *ngIf="habits$ | async as habits; else noHabits">
   <app-habit-card *ngFor="let habit of habits" [habit]="habit"></app-habit-card>

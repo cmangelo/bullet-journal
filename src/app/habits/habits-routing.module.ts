@@ -6,6 +6,10 @@ import { HabitsComponent } from './habits/habits.component';
 
 const routes: Routes = [
   {
+    path: 'habitEntry/:id',
+    component: HabitEntryComponent
+  },
+  {
     path: 'habitEntry',
     component: HabitEntryComponent
   },
