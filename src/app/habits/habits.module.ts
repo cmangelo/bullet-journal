@@ -10,9 +10,10 @@ import { initialHabitsState, reducer } from './+state/habits.reducer';
 import { HabitEntryComponent } from './habit-entry/habit-entry.component';
 import { HabitsRoutingModule } from './habits-routing.module';
 import { HabitsComponent } from './habits/habits.component';
+import { HabitCardComponent } from './habits/habit-card/habit-card.component';
 
 @NgModule({
-  declarations: [HabitsComponent, HabitEntryComponent],
+  declarations: [HabitsComponent, HabitEntryComponent, HabitCardComponent],
   imports: [
     CommonModule,
     HabitsRoutingModule,

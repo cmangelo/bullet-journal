@@ -1,23 +1,8 @@
 <h1>My Habits</h1>
 
-<ng-container *ngIf="habits$ | async as habits; else noHabits">
-  <div class="habits">
-    <div *ngFor="let habit of habits" class="habit">
-      <div class="freq-icon-container">
-        <i class="far fa-calendar-check"></i>
-        <span><i class="fa fa-check"></i> 23</span>
-      </div>
-      <div class="info-container">
-        <span class="title">{{habit.title}}</span>
-        <span>{{habit.description}}</span>
-        <div class="details">
-          <span>{{frequency[habit.frequency]}}</span>
-          <span class="date">Since {{habit.startDate | date: 'shortDate'}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>
+<div *ngIf="habits$ | async as habits; else noHabits">
+  <app-habit-card *ngFor="let habit of habits" [habit]="habit"></app-habit-card>
+</div>
 
 <ng-template #noHabits *ngIf="!(loading$ | async); else loading">
   <h3>You haven't created any habits yet!</h3>

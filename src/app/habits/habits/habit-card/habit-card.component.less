@@ -1,0 +1,59 @@
+:host {
+    background: white;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+    .freq-icon-container {
+        padding: 9px;
+        width: 20%;
+        border-right: 1px solid #f1f1f1;
+        text-align: center;
+        vertical-align: middle;
+        height: 100%;
+        margin: auto 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        > i {
+            font-size: 1.5em;
+        }
+
+        span {
+            margin-top: 3px; 
+            font-size: .7em;
+            color: #e0e0e0;
+        }
+    }
+
+    .info-container {
+        height: 100%;
+        padding: 9px 15px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+
+        .title {
+            font-size: 1.2em;
+            line-height: 1;   
+            margin-bottom: 5px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            color: #9a9a9a;
+            font-size: .8em;
+
+            .date {
+                color: #e0e0e0;
+            }
+        }
+    }
+}

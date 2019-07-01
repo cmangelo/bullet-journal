@@ -1,0 +1,13 @@
+<div class="freq-icon-container">
+  <i class="far fa-calendar-check"></i>
+  <span><i class="fa fa-check"></i> 23</span>
+</div>
+
+<div class="info-container">
+  <span class="title">{{habit.title}}</span>
+  <span>{{habit.description}}</span>
+  <div class="details">
+    <span>{{frequency[habit.frequency-1]}}</span>
+    <span class="date">Since {{habit.startDate | date: 'shortDate'}}</span>
+  </div>
+</div>
