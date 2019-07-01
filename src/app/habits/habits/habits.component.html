@@ -4,7 +4,8 @@
 </div>
 
 <div *ngIf="habits$ | async as habits; else noHabits">
-  <app-habit-card *ngFor="let habit of habits" [habit]="habit"></app-habit-card>
+  <app-habit-card *ngFor="let habit of habits" [habit]="habit" [routerLink]="['/habitEntry', habit._id]">
+  </app-habit-card>
 </div>
 
 <ng-template #noHabits *ngIf="!(loading$ | async); else loading">
