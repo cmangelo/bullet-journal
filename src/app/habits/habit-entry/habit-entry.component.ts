@@ -23,6 +23,7 @@ export class HabitEntryComponent implements OnInit {
   constructor(private facade: HabitsFacade) { }
 
   ngOnInit() {
+    //once were in here, we can use the _id from the route params to grab the habit from the store by ID (the data should be normalized so we can grab it instantly)
   }
 
   submit() {

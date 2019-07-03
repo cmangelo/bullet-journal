@@ -1,6 +1,6 @@
 <div class="header">
   <h1>My Habits</h1>
-  <span class="fas fa-edit fa-2x clickable" [routerLink]="'/habitEntry'"></span>
+  <span class="fas fa-plus-square fa-2x clickable" [routerLink]="'/habitEntry'"></span>
 </div>
 
 <div *ngIf="habits$ | async as habits; else noHabits">
@@ -13,6 +13,7 @@
   <button [routerLink]="'/habitEntry'">Get Started!</button>
 </ng-template>
 
+<!-- this needs to be adjusted, it currently is spinning even when we have habits, because the component is triggering GetHabits but we already have habits in the store -->
 <ng-template #loading>
   <div class="mar-top-md">
     <app-loading-animation></app-loading-animation>
