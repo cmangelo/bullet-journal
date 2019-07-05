@@ -25,6 +25,7 @@
     "@ngrx/effects": "^8.0.0",
     "@ngrx/entity": "8.0.1",
     "@ngrx/router-store": "8.0.1",
+    "@ngrx/schematics": "^8.0.1",
     "@ngrx/store": "^8.0.0",
     "@ngrx/store-devtools": "^8.0.0",
     "bootstrap": "^4.3.1",

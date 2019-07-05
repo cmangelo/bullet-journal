@@ -8,9 +8,7 @@ export interface State extends EntityState<Habit> {
     selectedHabitId: number | null;
 }
 
-
 export function selectUserId(habit: Habit): string {
-    //In this case this would be optional since primary key is id
     return habit._id;
 }
 
