@@ -1,21 +1,21 @@
 <div class="header">
   <h1>My Habits</h1>
-  <span class="fas fa-plus-square fa-2x clickable" [routerLink]="'/habitEntry'"></span>
+  <a class="clickable" [routerLink]="'/habitEntry'"><img src="../../../assets/icons/plus.svg" alt="Add"
+      height="32px"></a>
 </div>
 
-<div *ngIf="habits$ | async as habits; else noHabits">
-  <app-habit-card *ngFor="let habit of habits" [habit]="habit" [routerLink]="['/habitEntry', habit._id]">
-  </app-habit-card>
-</div>
+<ng-template #loading>
+  <div class="mar-top-md mar-bot-sm">
+    <app-loading-animation></app-loading-animation>
+  </div>
+</ng-template>
 
 <ng-template #noHabits *ngIf="!(loading$ | async); else loading">
   <h3>You haven't created any habits yet!</h3>
   <button [routerLink]="'/habitEntry'">Get Started!</button>
 </ng-template>
 
-<!-- this needs to be adjusted, it currently is spinning even when we have habits, because the component is triggering GetHabits but we already have habits in the store -->
-<ng-template #loading>
-  <div class="mar-top-md">
-    <app-loading-animation></app-loading-animation>
-  </div>
-</ng-template>
+<div *ngIf="habits$ | async as habits; else noHabits">
+  <app-habit-card *ngFor="let habit of habits" [habit]="habit" [routerLink]="['/habitEntry', habit._id]">
+  </app-habit-card>
+</div>

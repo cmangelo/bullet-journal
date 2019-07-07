@@ -1,6 +1,7 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
-import { Habit } from 'src/app/shared/models/habit.interface';
+
+import { Habit } from '../../../shared/models/habit.interface';
 
 
 export const loadHabits = createAction(
