@@ -1,16 +1,12 @@
 <!-- <button class="btn btn-primary" [routerLink]="'/'">Home</button> -->
 <div class="header">
-  <i class="fas fa-tasks"></i>
-  <h2>Create a Habit</h2>
+  <!-- <i class="fas fa-tasks"></i> -->
+  <h2>Create a Habit <img src="../../../assets/icons/new.svg" height="32px"></h2>
 </div>
 <form [formGroup]="habitEntryForm" (ngSubmit)="submit()">
   <label>
     Title
     <input type="text" formControlName="title">
-  </label>
-  <label>
-    Description
-    <input type="text" formControlName="description">
   </label>
   <label>
     Frequency
@@ -27,7 +23,10 @@
   </label>
   <label>
     Start Date
-    <input type="date" formControlName="startDate" [placeholder]="date | date: 'shortDate'">
+    <div>
+      <input style="width: 150px" type="date" formControlName="startDate" [placeholder]="date | date: 'shortDate'">
+      <!-- <input type="text" ngbDatepicker formControlName="startDate"> -->
+    </div>
   </label>
   <button type="submit" class="submit clickable" [ngClass]="{'loading': loading$ | async}"
     [disabled]="!habitEntryForm.valid">

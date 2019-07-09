@@ -4,7 +4,6 @@ import { Completion } from './completion.interface';
 export interface Habit {
     _id: string;
     title: string;
-    description: string;
     owner: string;
     frequency: FrequencyType;
     startDate: Date;

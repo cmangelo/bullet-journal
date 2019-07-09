@@ -15,7 +15,6 @@ export class HabitEntryComponent implements OnInit {
 
   habitEntryForm = new FormGroup({
     title: new FormControl('', Validators.required),
-    description: new FormControl(''),
     frequency: new FormControl('1', Validators.required),
     startDate: new FormControl(new Date().toISOString().substring(0, 10), Validators.required)
   });

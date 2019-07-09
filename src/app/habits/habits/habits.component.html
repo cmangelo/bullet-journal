@@ -13,6 +13,7 @@
 <ng-template #noHabits *ngIf="!(loading$ | async); else loading">
   <h3>You haven't created any habits yet!</h3>
   <button [routerLink]="'/habitEntry'">Get Started!</button>
+  <!-- this should redirect to a detail page about the habit (info about habit and completions list) -->
 </ng-template>
 
 <div *ngIf="habits$ | async as habits; else noHabits">
